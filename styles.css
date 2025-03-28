@@ -23,30 +23,35 @@
     src: url('./Fonts/poppins-v22-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   }
 
+  /* CSS reset */
+
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0%;
   }
 
+  /* Main styles */
+
   body {
     min-height: 100vh;
     background-color: hsl(0, 0%, 100%);
     font-family: 'Poppins', sans-serif;
+    align-content: center;
   }
 
   header {
     min-width: 100%;
     align-content: center;
-    padding: 1em; /* Would a div around the header content make it more scalable? It's constrained to about 50vw on desktop */
+    padding: 1em 1em 0 1em;
   }
 
-  header h1 { 
+  .header-container h1 { 
     text-align: center;
     font-size: 1.5rem;
     font-weight: 200;
     color: hsl(234, 12%, 34%);
-    margin: 1em 0;
+    margin: 1.25em 0 0.6em 0;
     /* Is line-height okay? */
   }
 
@@ -55,53 +60,137 @@
     font-weight: 600;
   }
 
-  header p {
+  .header-container p {
     text-align: center;
-    color: hsl(212, 6%, 44%); /* Review all font colors when you're finishing */
+    color: hsl(212, 6%, 44%); 
   }
 
   main {
     min-width: 100%;
     align-content: center;
-    padding: 2em;
+    padding: 3em 2em 2em 2em;
   }
 
   .grid-container {
     display: grid;
     gap: 1.5em;
     grid-template-columns: 1fr;
-    align-content: center; /* Do you need this here or does application on the body do the trick? */
   }
 
   .content-box {
     display: flex;
     flex-direction: column;
-    border-radius: 0.5em;
-    box-shadow: 0 0.1em 0.3em 0.1em hsl(212, 6%, 44%);
-    padding: 1em;
+    border-radius: 0.3em;
+    box-shadow: 0em 1.25em 1.25em -1.25em hsl(212, 6%, 44%); 
+    padding: 1.5em;
   }
 
   .top-color-lightblue {
-    border-top: 0.2em solid hsl(180, 62%, 55%);
+    border-top: 0.3em solid hsl(180, 62%, 55%);
   }
 
   .top-color-red {
-    border-top: 0.2em solid hsl(0, 78%, 62%);
+    border-top: 0.3em solid hsl(0, 78%, 62%);
   }
 
   .top-color-yellow {
-    border-top: 0.2em solid hsl(34, 97%, 64%);
+    border-top: 0.3em solid hsl(34, 97%, 64%);
   }
 
   .top-color-darkblue {
-    border-top: 0.2em solid hsl(212, 86%, 64%);
+    border-top: 0.3em solid hsl(212, 86%, 64%);
   }
 
-  .content-box img {
-    width: 15%;
-    align-self: end;
+  .content-box h2 {
+    font-size: 1.375rem; 
+    color: hsl(234, 12%, 34%);
+    margin-bottom: 0.35em;
   }
 
   .content-box p {
-    margin-bottom: 2em;
+    font-size: 0.9rem; 
+    color: hsl(212, 6%, 44%);
+    margin-bottom: 1.5em; 
+  }
+
+  .content-box img {
+    width: 22.5%;
+    align-self: end;
+    margin-bottom: 1em;
+  }
+
+  /* ==== Media queries ==== */
+
+  /* Large mobile view */
+
+  @media (min-width: 500px) {
+  .header-container {
+    max-width: 80%;
+    margin: auto;
+  }
+
+  .grid-container {
+    max-width: 80%;
+    margin: auto;
+  } 
+}
+
+  /* Largest mobile view */
+
+  @media (min-width: 820px) {
+    .header-container {
+      max-width: 70%;
+      margin: auto;
+    }
+
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      gap: 2em;
+      max-width: 70%;
+      margin: auto;
+    } 
+  }
+
+
+  @media (min-width: 1111px) {
+    header {
+      padding: 0 0 4em 0;
+    }
+
+    .header-container {
+      max-width: 38.5%;
+      margin: auto;
+    }
+
+    .header-container h1 {
+      margin: 1em 0 0.3em 0;
+      font-size: 2.2rem; 
+    }
+
+    main {
+      padding: 0 5em 5em 5em;
+    }
+
+    .grid-container {
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center; /* this allowed the grid items to be placed between the rows when 'grid-row: 1/3 was applied to the item, not sure how this works - find out */
+      gap: 2em;
+      max-width: 90%;
+      margin: auto;
+    }
+
+    .top-color-lightblue {
+      grid-column: 1/2;
+      grid-row: 1/3;
+    }
+
+    .top-color-yellow {
+      grid-column-start: 2;
+    }
+
+    .top-color-darkblue {
+      grid-column: 3/4;
+      grid-row: 1/3;
+    }
   }
